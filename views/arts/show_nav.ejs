@@ -1,0 +1,33 @@
+<% include include/header %>
+    <div class="wrap row w700">
+        <% include include/nav %>
+        <div class="art">
+        <% for(var i = 0 ;  i < docs.length ; i++ ) { %>
+            <div class="box w700" data-docs="docs[i]">
+                <div class="show">
+                    <h2 class="name"> <%= docs[i]['n_publish'] %> &nbsp; | &nbsp; <%= docs[i]['name'] %>  </h2>
+                    <img id="normal" src="<%= docs[i]['pic'] %>">
+                    <span class="author"> <%= docs[i]['author'] %> </span>
+                </div>
+                <div class="action_wrap">
+                    <div class="action">
+                     <a class="share"><i class="icon-share-alt icon-white"></i> 分享 <span class="num">(<%= docs[i]['commentcount'] %>) </span></a>
+                     &nbsp;&nbsp;
+                     <a class="like"><i class="icon-star-empty icon-white"></i> 收藏 <span class="num">(<%= !!docs[i]['likecount'] ? docs[i]['likecount'] : 0  %>)</span></a>
+                     </div>
+                </div>
+                <div class="detail">
+                    <%var details =  docs[i]['detail'].split("\r\n");
+                      for(var j =0;j<details.length;j++){
+                     %>
+                     <p><%=details[j]%></p>
+                     <%}%>
+                </div>
+
+                <div class="comment"></div>
+            </div>
+        <% } %>
+        </div>
+    </div>
+
+<% include include/footer %>
